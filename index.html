@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Christmas Surprise 🎄</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .screen {
+      display: none;
+      text-align: center;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .active {
+      display: block;
+    }
+
+    h1, h2 {
+      color: #d6336c;
+    }
+
+    p {
+      color: #444;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background: #d6336c;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+
+    .cookies {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .cookie {
+      font-size: 30px;
+      padding: 15px;
+      background: #ffe8cc;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .cookie:hover {
+      background: #ffd8a8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Welcome Screen -->
+  <div id="welcome" class="screen active">
+    <h1>Welcome 🎄</h1>
+    <p>This little journey is just for you ❤️</p>
+    <button onclick="showScreen('wishes')">Enter</button>
+  </div>
+
+  <!-- Wishes Screen -->
+  <div id="wishes" class="screen">
+    <h2>Merry Christmas 🎁</h2>
+    <p>
+      May your days be warm, your smile brighter,
+      and this Christmas bring you peace and joy ✨
+    </p>
+    <button onclick="showScreen('game')">Continue</button>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="game" class="screen">
+    <h2>Pick the Special Cookie 🍪</h2>
+    <p>Only one hides a surprise</p>
+
+    <div class="cookies">
+      <div class="cookie" onclick="pickCookie(1)">🍪</div>
+      <div class="cookie" onclick="pickCookie(2)">🍪</div>
+      <div class="cookie" onclick="pickCookie(3)">🍪</div>
+      <div class="cookie" onclick="pickCookie(4)">🍪</div>
+      <div class="cookie" onclick="pickCookie(5)">🍪</div>
+      <div class="cookie" onclick="pickCookie(6)">🍪</div>
+      <div class="cookie" onclick="pickCookie(7)">🍪</div>
+      <div class="cookie" onclick="pickCookie(8)">🍪</div>
+      <div class="cookie" onclick="pickCookie(9)">🍪</div>
+    </div>
+  </div>
+
+  <!-- Love Screen -->
+  <div id="love" class="screen">
+    <h2>For You ❤️</h2>
+    <p>
+      You are my comfort, my chaos, my calm.<br>
+      I don’t promise perfection, but I promise honesty and effort 💌
+    </p>
+    <button onclick="showScreen('end')">One Last Thing</button>
+  </div>
+
+  <!-- End Screen -->
+  <div id="end" class="screen">
+    <h2>Merry Christmas 🎄❤️</h2>
+    <p>
+      Thank you for being part of my year.<br>
+      I hope the next one keeps us closer ✨
+    </p>
+    <button onclick="restart()">Restart</button>
+  </div>
+
+  <script>
+    const correctCookie = 5;
+
+    function showScreen(id) {
+      document.querySelectorAll('.screen').forEach(screen => {
+        screen.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+
+    function pickCookie(number) {
+      if (number === correctCookie) {
+        showScreen('love');
+      } else {
+        alert('Wrong cookie 😜 Try again');
+      }
+    }
+
+    function restart() {
+      showScreen('welcome');
+    }
+  </script>
+
+</body>
+</html>
